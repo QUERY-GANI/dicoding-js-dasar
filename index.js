@@ -1,34 +1,23 @@
-class CustomError extends Error {
-    constructor(message) {
-        super(message);
-        this.name = "CustomError";
-    }
+const stock = {
+    // coffeeBeans: 250, // resolved
+    coffeeBeans: 1, // rejected
+    water: 1000,
 }
-
-// const json = '{ "name": "Yoda", "age": 20 }'; // no error
-// const json = 'bad json'; // error
-const json = '{ "age": 15 }'; // does not raise an error but will cause a bug
-     
-try {
-    let user = JSON.parse(json);
  
-    if (!user.name) {
-        throw new CustomError("'name' is required.");
-    }
-    if (!user.age) {
-        throw new CustomError("'age' is required.");
-    }
- 
-    console.log(user.name);
-    console.log(user.age);
-} catch (error) {
-    if (error instanceof SyntaxError) {
-        console.log(`JSON Syntax Error: ${error.message}`);
-    } else if (error instanceof CustomError) {
-        console.log(`Invalid data: ${error.message}`);
-    } else if (error instanceof ReferenceError) {
-        console.log(error.message);
+const checkStock = new Promise((resolve, reject) => {
+    if (stock.coffeeBeans >= 16 && stock.water >= 250) {
+        resolve("Stok cukup. Bisa membuat kopi");
     } else {
-        console.log(error.stack);
+        reject("Stok tidak cukup");
     }
+});
+ 
+const handleSuccess = resolvedValue => {
+    console.log(resolvedValue);
 }
+ 
+const handleFailure = rejectionReason => {
+    console.log(rejectionReason);
+}
+ 
+checkStock.then(handleSuccess, handleFailure);
