@@ -1,3 +1,5 @@
+const coffeeStock = require('./state');
+
 console.log("Menyalakan mesin kopi");
 console.log("Menggiling biji kopi");
 console.log("Memanaskan air");
