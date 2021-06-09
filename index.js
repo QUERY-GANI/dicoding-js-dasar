@@ -1,23 +1,6 @@
-const stock = {
-    // coffeeBeans: 250, // resolved
-    coffeeBeans: 1, // rejected
-    water: 1000,
-}
+const _ = require("lodash");
+
+const myArray = [1, 2, 3, 4];
+const sum = _.sum(myArray);
  
-const checkStock = new Promise((resolve, reject) => {
-    if (stock.coffeeBeans >= 16 && stock.water >= 250) {
-        resolve("Stok cukup. Bisa membuat kopi");
-    } else {
-        reject("Stok tidak cukup");
-    }
-});
- 
-const handleSuccess = resolvedValue => {
-    console.log(resolvedValue);
-}
- 
-const handleFailure = rejectionReason => {
-    console.log(rejectionReason);
-}
- 
-checkStock.then(handleSuccess, handleFailure);
+console.log(sum);
