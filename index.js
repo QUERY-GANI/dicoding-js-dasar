@@ -1,4 +1,6 @@
-const coffeeStock = require('./state');
+import { isCoffeeMachineReady } from "./state.js";
+
+console.log(isCoffeeMachineReady);
 
 console.log("Menyalakan mesin kopi");
 console.log("Menggiling biji kopi");
